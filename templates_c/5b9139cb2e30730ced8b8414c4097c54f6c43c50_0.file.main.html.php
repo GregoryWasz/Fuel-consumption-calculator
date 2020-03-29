@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-29 22:34:09
+/* Smarty version 3.1.34-dev-7, created on 2020-03-29 23:34:43
   from '/Applications/MAMP/htdocs/Spalanie/templates/main.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e81226137add1_93228166',
+  'unifunc' => 'content_5e813093130973_72902817',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5b9139cb2e30730ced8b8414c4097c54f6c43c50' => 
     array (
       0 => '/Applications/MAMP/htdocs/Spalanie/templates/main.html',
-      1 => 1585520848,
+      1 => 1585521392,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e81226137add1_93228166 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e813093130973_72902817 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -32,7 +32,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 -->
 <html>
 <head>
-    <title>Arcana by HTML5 UP</title>
+    <title>Kalkulatory samochodowe</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
@@ -68,7 +68,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     </section>
     <!-- Blok z moim kalkulatorem-->
     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16054896355e812261374659_29651656', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1967158865e813093129bd1_42193377', 'content');
 ?>
 
         <!-- Footer -->
@@ -77,7 +77,9 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16054896355e812261
         <!-- Copyright -->
         <div class="copyright">
             <ul class="menu">
-                <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>&copy; Untitled. All rights reserved</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>Calculators by Grzegorz Waszkowski</li>
             </ul>
         </div>
 
@@ -114,12 +116,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16054896355e812261
 </body>
 </html><?php }
 /* {block 'content'} */
-class Block_16054896355e812261374659_29651656 extends Smarty_Internal_Block
+class Block_1967158865e813093129bd1_42193377 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_16054896355e812261374659_29651656',
+    0 => 'Block_1967158865e813093129bd1_42193377',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
