@@ -1,12 +1,12 @@
 <?php
 require_once dirname(__FILE__).'/core/Config.class.php';
-$conf = new Config();
-include dirname(__FILE__).'/config.php';
+$conf = new core\Config();
+require_once 'config.php'; //ustaw konfigurację
 
 function &getConf(){ global $conf; return $conf; }
 
-require_once getConf()->root_path.'/core/Messages.class.php';
-$msgs = new Messages();
+require_once 'core/Messages.class.php';
+$msgs = new core\Messages();
 
 function &getMessages(){ global $msgs; return $msgs; }
 
@@ -28,6 +28,13 @@ function &getSmarty(){
 	return $smarty;
 }
 
-require_once getConf()->root_path.'/core/functions.php';
+require_once 'core/ClassLoader.class.php'; //załaduj i stwórz loader klas
+$cloader = new core\ClassLoader();
+function &getLoader() {
+    global $cloader;
+    return $cloader;
+}
+
+require_once 'core/functions.php';
 
 $action = getFromRequest('action');

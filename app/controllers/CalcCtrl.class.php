@@ -1,7 +1,8 @@
 <?php
+namespace app\controllers;
 // załadowanie potrzebnych klas
-require_once $conf->root_path.'/app/controllers/CalcForm.class.php';
-require_once $conf->root_path.'/app/controllers/CalcResult.class.php';
+use app\forms\CalcForm;
+use app\transfer\CalcResult;
 
 
 // klasa kalkulatora spalania
