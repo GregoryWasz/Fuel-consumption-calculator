@@ -1,4 +1,4 @@
-{extends file=$conf->root_path|cat:"/templates/main.html"}
+{extends file=$conf->root_path|cat:"/templates/main.tpl"}
 {block name = content}
 
     <!-- Forms -->

@@ -97,7 +97,7 @@ class CalcCtrl
         $smarty->assign('msgs',$this->msgs);
         $smarty->assign('form',$this->form);
         $smarty->assign('res',$this->result);
-        $smarty->display($conf->root_path.'/app/calc/CalcView.html');
+        $smarty->display($conf->root_path.'/app/calc/CalcView.tpl');
 
     }
 }
