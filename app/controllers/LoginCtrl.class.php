@@ -10,7 +10,6 @@ class LoginCtrl{
 
     public function __construct(){
         $this->form = new LoginForm();
-
     }
 
     public function getParams(){
@@ -22,9 +21,7 @@ class LoginCtrl{
         if (! (isset ( $this->form->login ) && isset ( $this->form->pass ))) {
             return false;
         }
-
         if (! getMessages()->isError ()) {
-
             if ($this->form->login == "") {
                 getMessages()->addError ( 'Nie podano loginu' );
             }
@@ -34,20 +31,15 @@ class LoginCtrl{
         }
 
         if ( !getMessages()->isError() ) {
-
-            // dane z bazy danych:
             if ($this->form->login == "admin" && $this->form->pass == "admin") {
 
                 $user = new User($this->form->login, 'admin');
                 $_SESSION['user'] = serialize($user);
                 addRole($user->role);
-
             } else if ($this->form->login == "user" && $this->form->pass == "user") {
-
                 $user = new User($this->form->login, 'user');
                 $_SESSION['user'] = serialize($user);
                 addRole($user->role);
-
             } else {
                 getMessages()->addError('Niepoprawny login lub hasło');
             }
@@ -56,22 +48,17 @@ class LoginCtrl{
         return ! getMessages()->isError();
     }
 
-    public function doLogin(){
+    public function action_login(){
         $this->getParams();
         if ($this->validate()){
-            //zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
             header("Location: ".getConf()->app_url."/");
         } else {
-            //niezalogowany => wyświetl stronę logowania
             $this->generateView();
         }
-
     }
 
-    public function doLogout(){
-        // 1. zakończenie sesji - tylko kończymy, jesteśmy już podłączeni w init.php
+    public function action_logout(){
         session_destroy();
-        // 2. wyświetl stronę logowania z informacją
         getMessages()->addInfo('Poprawnie wylogowano z systemu');
         $this->generateView();
     }

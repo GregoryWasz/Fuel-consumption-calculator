@@ -64,7 +64,7 @@ class CalcCtrl
     }
 
     // wykonuje obliczenia
-    public function process()
+    public function action_CalcCompute()
     {
 
         $this->getParams();
@@ -84,6 +84,11 @@ class CalcCtrl
         //generowanie widoku - tylko bloku z kalulatorem
         $this->generateView();
 
+    }
+
+    public function action_calcShow(){
+        getMessages()->addInfo('Witaj w kalkulatorze');
+        $this->generateView();
     }
 
     //Smarty
