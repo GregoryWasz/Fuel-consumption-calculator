@@ -1,31 +1,15 @@
 <?php
 require_once 'init.php';
 
+getConf()->login_action = 'login';
+
 switch ($action) {
     default :
-        include 'check.php';
-        $ctrl = new app\controllers\CalcCtrl();
-        $ctrl->generateView();
-        break;
-    case 'calcCompute' :
-        include 'check.php';
-        $ctrl = new app\controllers\CalcCtrl();
-        $ctrl->process();
-        break;
+        control('', 'CalcCtrl','generateView', ['user','admin']);
     case 'login':
-        $ctrl = new app\controllers\LoginCtrl();
-        $ctrl->doLogin();
-        break;
+        control('', 'LoginCtrl','doLogin');
+    case 'calcCompute' :
+        control('', 'CalcCtrl', 'process', ['user','admin']);
     case 'logout' :
-        include 'check.php';
-        $ctrl = new app\controllers\LoginCtrl();
-        $ctrl->doLogout();
-        break;
-    case 'action1' :
-        print('Publiczna..');
-        break;
-    case 'action2' :
-        include 'check.php';
-        print('niepubliczna');
-        break;
+        control('', 'LoginCtrl', 'doLogout',	['user','admin']);
 }

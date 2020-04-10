@@ -10,6 +10,7 @@ class LoginCtrl{
 
     public function __construct(){
         $this->form = new LoginForm();
+
     }
 
     public function getParams(){
@@ -19,7 +20,7 @@ class LoginCtrl{
 
     public function validate() {
         if (! (isset ( $this->form->login ) && isset ( $this->form->pass ))) {
-            getMessages()->addError('Błędne wywołanie aplikacji !');
+            return false;
         }
 
         if (! getMessages()->isError ()) {
@@ -33,19 +34,20 @@ class LoginCtrl{
         }
 
         if ( !getMessages()->isError() ) {
-            // (BAZA:)
+
+            // dane z bazy danych:
             if ($this->form->login == "admin" && $this->form->pass == "admin") {
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
+
                 $user = new User($this->form->login, 'admin');
                 $_SESSION['user'] = serialize($user);
+                addRole($user->role);
+
             } else if ($this->form->login == "user" && $this->form->pass == "user") {
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
+
                 $user = new User($this->form->login, 'user');
                 $_SESSION['user'] = serialize($user);
+                addRole($user->role);
+
             } else {
                 getMessages()->addError('Niepoprawny login lub hasło');
             }
@@ -55,31 +57,27 @@ class LoginCtrl{
     }
 
     public function doLogin(){
-
         $this->getParams();
-
         if ($this->validate()){
+            //zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
             header("Location: ".getConf()->app_url."/");
         } else {
+            //niezalogowany => wyświetl stronę logowania
             $this->generateView();
         }
 
     }
 
     public function doLogout(){
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        // 1. zakończenie sesji - tylko kończymy, jesteśmy już podłączeni w init.php
         session_destroy();
-
+        // 2. wyświetl stronę logowania z informacją
         getMessages()->addInfo('Poprawnie wylogowano z systemu');
-
         $this->generateView();
     }
 
     public function generateView(){
 
-        getSmarty()->assign('page_title','Strona logowania');
         getSmarty()->assign('form',$this->form);
         getSmarty()->display('LoginView.tpl');
     }
