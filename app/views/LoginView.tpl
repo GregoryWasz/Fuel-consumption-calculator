@@ -6,33 +6,30 @@
         <div class="container">
             <div class="row gtr-200">
                 <section class="col-6 col-12-narrower">
-                    <h3>Kalkulator kosztu przejechania trasy</h3>
-                    <h5>Użytkownik: {$user->login}<br> Rola: {$user->role}</h5>
-
-                    <form action="{$conf->action_url}calcCompute" method="post">
+                    <h3>Logowanie do systemu</h3>
+                    <form action="{$conf->action_url}login" method="post">
                         <div class="row gtr-50">
                             <div class="col-12">
-                                <input type="text" name="x" id="x" placeholder="Długość planowanej trasy w kilometrach" value="{$form->x}"/>
+                                <h4>Login:</h4>
+                                <input type="text" name="login" id="id_login" placeholder="Login" />
                             </div>
                             <div class="col-12">
-                                <input type="text" name="y" id="y" placeholder="Średnie spalanie w litrach na 100 km" value="{$form->y}"/>
-                            </div>
-                            <div class="col-12">
-                                <input type="text" name="z" id="z" placeholder="Cena litra paliwa"  value="{$form->z}"/>
+                                <h4>Hasło:</h4>
+                                <input type="text" name="pass" id="id_pass" placeholder="Password" "/>
                             </div>
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" class="button alt" value="Licz!" /></li>
-                                    <li><a href="{$conf->action_url}logout"  class="button alt">Wyloguj!</a></li>
+                                    <li><input type="submit" class="button alt" value="Zaloguj" /></li>
                                 </ul>
                             </div>
+
                         </div>
                     </form>
                 </section>
                 <div class="col-6 col-12-narrower">
                     {* wyświeltenie listy błędów, jeśli istnieją *}
                     {if $msgs->isError()}
-                            <h3>Wystąpiły błędy: </h3>
+                            <h4>Wystąpiły błędy: </h4>
                             <div style=" padding: 10px; border-radius: 5px; background-color: #ff4468; width:100%;">
                             <ol style ="margin: 0">
                                 {foreach  $msgs->getErrors() as $err}
@@ -46,7 +43,7 @@
 
                     {* wyświeltenie listy informacji, jeśli istnieją *}
                     {if $msgs->isInfo()}
-                            <h3>Informacje: </h3>
+                            <h4>Informacje: </h4>
                             <div style=" padding: 10px; border-radius: 5px; background-color: #1bff12; width:100%;">
                             <ol style ="margin: 0">
                                 {foreach $msgs->getInfos() as $inf}
@@ -56,13 +53,6 @@
                                 {/foreach}
                             </ol>
                             </div>
-                    {/if}
-
-                    {if isset($res->result)}
-                        <h3>Wynik:</h3>
-                        <p style="padding: 10px;  border-radius: 5px; background-color: #fff930; width:100%;">
-                            {$res->result}
-                        </p>
                     {/if}
 
                 </div>

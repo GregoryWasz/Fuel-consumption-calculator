@@ -1,0 +1,21 @@
+<?php
+
+use app\transfer\User;
+
+//inicjacja mechanizmu sesji
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+//pobranie całego obiektu z sesji
+$user = isset($_SESSION['user']) ? unserialize($_SESSION['user']) : null;
+
+//jeśli brak parametru lub danych (niezalogowanie) to wyświetl stronę logowania
+if ( ! (isset($user) && isset($user->login) && isset($user->role)) ){
+
+    $ctrl = new app\controllers\LoginCtrl();
+    $ctrl->generateView();
+
+    exit();
+}
+
