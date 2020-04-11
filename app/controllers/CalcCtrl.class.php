@@ -93,6 +93,7 @@ class CalcCtrl
 
     //Smarty
     public function generateView(){
+        getSmarty()->assign('user',unserialize($_SESSION['user']));
         getSmarty()->assign('form',$this->form);
         getSmarty()->assign('res',$this->result);
         getSmarty()->display('CalcView.tpl');
