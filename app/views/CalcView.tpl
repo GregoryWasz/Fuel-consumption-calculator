@@ -22,8 +22,10 @@
                             </div>
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" class="button alt" value="Licz!" /></li>
-                                    <li><a href="{$conf->action_url}logout"  class="button alt">Wyloguj!</a></li>
+                                    <li>
+                                        <input type="submit" class="button alt" value="Licz!" />
+                                        <a href="{$conf->action_url}logout"  class="button alt">Wyloguj!</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
