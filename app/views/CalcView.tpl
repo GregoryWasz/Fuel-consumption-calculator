@@ -6,8 +6,8 @@
         <div class="container">
             <div class="row gtr-200">
                 <section class="col-6 col-12-narrower">
-                    <h3>Kalkulator kosztu przejechania trasy</h3>
-                    <h5>Użytkownik: {$user->login}<br> Rola: {$user->role}</h5>
+                    <h3 style = "margin-bottom: 5px">Kalkulator kosztu przejechania trasy</h3>
+                    <h5 style = "margin-bottom: 5px">Użytkownik: {$user->login}<br> Rola: {$user->role}</h5>
 
                     <form action="{$conf->action_url}calcCompute" method="post">
                         <div class="row gtr-50">
@@ -22,10 +22,10 @@
                             </div>
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li>
-                                        <input type="submit" class="button alt" value="Licz!" />
-                                        <a href="{$conf->action_url}logout"  class="button alt">Wyloguj!</a>
-                                    </li>
+                                    <li> <input type="submit" class="button alt" value="Licz" /> </li>
+                                    <li> <a href="{$conf->action_url}outcome"  class="button alt">Ostatnie wyniki</a> </li>
+                                    <li> <a href="{$conf->action_url}logout"  class="button alt">Wyloguj</a> </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                 <div class="col-6 col-12-narrower">
                     {* wyświeltenie listy błędów, jeśli istnieją *}
                     {if $msgs->isError()}
-                            <h3>Wystąpiły błędy: </h3>
+                            <h3 style = "margin-bottom: 5px">Wystąpiły błędy: </h3>
                             <div style=" padding: 10px; border-radius: 5px; background-color: #ff4468; width:100%;">
                             <ol style ="margin: 0">
                                 {foreach  $msgs->getErrors() as $err}
@@ -48,7 +48,7 @@
 
                     {* wyświeltenie listy informacji, jeśli istnieją *}
                     {if $msgs->isInfo()}
-                            <h3>Informacje: </h3>
+                            <h3 style = "margin-bottom: 5px">Informacje: </h3>
                             <div style=" padding: 10px; border-radius: 5px; background-color: #1bff12; width:100%;">
                             <ol style ="margin: 0">
                                 {foreach $msgs->getInfos() as $inf}
@@ -61,7 +61,7 @@
                     {/if}
 
                     {if isset($res->result)}
-                        <h3>Wynik:</h3>
+                        <h3 style = "margin-bottom: 5px">Wynik:</h3>
                         <p style="padding: 10px;  border-radius: 5px; background-color: #fff930; width:100%;">
                             {$res->result}
                         </p>

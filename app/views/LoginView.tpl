@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row gtr-200">
                 <section class="col-6 col-12-narrower">
-                    <h3>Logowanie do systemu</h3>
+                    <h3 style = "margin-bottom: 5px">Logowanie do systemu</h3>
                     <form action="{$conf->action_url}login" method="post">
                         <div class="row gtr-50">
                             <div class="col-12">
@@ -29,7 +29,7 @@
                 <div class="col-6 col-12-narrower">
                     {* wyświeltenie listy błędów, jeśli istnieją *}
                     {if $msgs->isError()}
-                            <h4>Wystąpiły błędy: </h4>
+                            <h4 style = "margin-bottom: 5px">Wystąpiły błędy: </h4>
                             <div style=" padding: 10px; border-radius: 5px; background-color: #ff4468; width:100%;">
                             <ol style ="margin: 0">
                                 {foreach  $msgs->getErrors() as $err}
@@ -43,7 +43,7 @@
 
                     {* wyświeltenie listy informacji, jeśli istnieją *}
                     {if $msgs->isInfo()}
-                            <h4>Informacje: </h4>
+                            <h4 style = "margin-bottom: 5px">Informacje: </h4>
                             <div style=" padding: 10px; border-radius: 5px; background-color: #1bff12; width:100%;">
                             <ol style ="margin: 0">
                                 {foreach $msgs->getInfos() as $inf}
