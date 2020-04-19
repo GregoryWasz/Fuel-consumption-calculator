@@ -79,6 +79,43 @@ class CalcCtrl
 
             $this->result->result = $this->form->x / 100 * $this->form->y * $this->form->z;
             getMessages()->addInfo('Wykonano obliczenia.');
+
+
+            //zapis do bazy danych
+
+            try {
+                $database = new \Medoo\Medoo([
+                    // required
+                    'database_type' => 'mysql',
+                    'database_name' => 'calc',
+                    'server' => 'localhost',
+                    //korzystam z MAMP dlatego domyślne hasło również jest root
+                    'username' => 'root',
+                    'password' => 'root',
+                    'charset' => 'utf8',
+                    'collation' => 'utf8_polish_ci',
+                    //korzystam z MAMP dlatego port 8889
+                    'port' => 8889,
+                    'option' => [
+                        \PDO::ATTR_CASE => \PDO::CASE_NATURAL,
+                        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+                    ]
+                ]);
+
+
+                $database->insert("wynik", [
+                    "dlugosc" => $this->form->x,
+                    "srednia" => $this->form->y,
+                    "cena" => $this->form->z,
+                    "koszt" => $this->result->result,
+                    "data" => date("Y-m-d H:i:s")
+                ]);
+
+
+            } catch (\PDOException $ex){
+                getMessages()->addError("DB Error: ".$ex->getMessage());
+            }
+
         }
 
         //generowanie widoku - tylko bloku z kalulatorem
